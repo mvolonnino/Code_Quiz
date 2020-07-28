@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <script defer src="./script.js"></script>
+
+    <title>Quiz Game</title>
+  </head>
+  <body>
+    <div class="jumbotron shadow-lg">
+      <h1 class="display-4">The Quiz Game!</h1>
+      <p class="lead">
+        This is a multiple choice game. The rules are simple: answer the
+        questions correctly! At the end, save your initials and high score.
+        C'mon, you got this, show us how smart you are.
+      </p>
+      <hr class="my-4" />
+      <p>
+        Click the button below to start the game. When clicked, a countdown
+        timer will start from 20 seconds. Every right answer you get will add 4
+        seconds to the timer, but beware. Every wrong answer will subtract 2
+        seconds... so make sure you are choosing correctly! When in doubt, "B"
+        it out!
+      </p>
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        id="start-button"
+        data-toggle="modal"
+        data-target="#quizModal"
+      >
+        Start Game!
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="quizModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">
+                Avengers Quiz
+              </h5>
+              <div id="timer-countdown">Timer Goes here</div>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- questions go here -->
+              <div id="question-container">
+                <div id="question">Questions go here</div>
+              </div>
+              <!-- answers go here -->
+              <div class="answerContainer">
+                <div class="topContainer">
+                  <button id="answer1" class="question">Answer 1</button>
+                  <button id="answer2" class="question">Answer 2</button>
+                </div>
+                <div class="bottomContainer">
+                  <button id="answer3" class="question">Answer 3</button>
+                  <button id="answer4" class="question">Answer 4</button>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div id="question-answer">Alert if correct or wrong here</div>
+              <button type="button" class="btn btn-primary">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

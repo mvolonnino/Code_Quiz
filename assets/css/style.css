@@ -1,0 +1,28 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.centerBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topContainer,
+.bottomContainer {
+  display: flex;
+}
+
+.question {
+  flex: 1;
+  margin: 2px;
+}
+
+#question-answer {
+  padding-right: 180px;
+}
+
+#timer-countdown {
+  padding-left: 180px;
+}
