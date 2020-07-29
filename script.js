@@ -1,6 +1,3 @@
-src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
-//Questions for the game
-
 // Links to the start button that will play the game
 var startButton = document.getElementById("start-button");
 var questionContainer = document.getElementById("question-container");
@@ -63,6 +60,10 @@ var gameQuestions = [
     answer: 3,
   },
 ];
+// Event listener to know when the user wants to startGame()
+document.getElementById("start-button").addEventListener("click", function () {
+  startGame();
+});
 
 function startGame() {
   questionCounter = 0;
@@ -72,6 +73,20 @@ function startGame() {
   startTimer();
   $("#timer-countdown").text(timer);
   getNextQuestion();
+  userInputListeners();
+}
+
+function startTimer() {
+  var gameTimer = setInterval(function () {
+    if (timer >= 0) {
+      console.log("timer: ", timer);
+      $("#timer-countdown").text(timer);
+      timer--;
+    } else {
+      console.log("game over");
+      clearInterval(gameTimer);
+    }
+  }, 1000);
 }
 
 function checkUserAnswer(userAnswer, answer) {
@@ -91,19 +106,6 @@ function checkUserAnswer(userAnswer, answer) {
   return getNextQuestion();
 }
 
-function startTimer() {
-  var gameTimer = setInterval(function () {
-    if (timer >= 0) {
-      console.log("timer: ", timer);
-      $("#timer-countdown").text(timer);
-      timer--;
-    } else {
-      console.log("game over");
-      clearInterval(gameTimer);
-    }
-  }, 1000);
-}
-
 function getNextQuestion() {
   setTimeout(function () {
     console.log("timeout");
@@ -119,6 +121,8 @@ function getNextQuestion() {
   // when there are none left we want to change next button to submit
   // display score
   if (remainingQuestions.length === 0) {
+    $("nextBtn").text("Submit").show();
+
     console.log("there are no more questions");
 
     return;
@@ -135,53 +139,59 @@ function getNextQuestion() {
   remainingQuestions.splice(questionIndex, 1);
 }
 
-document.getElementById("start-button").addEventListener("click", function () {
-  startGame();
-});
+function userInputListeners() {
+  document.getElementById("nextBtn").addEventListener("click", (event) => {
+    if (answerInput) {
+      checkUserAnswer(userAnswer, currentQuestion.answer);
+    }
+  });
 
-document.getElementById("nextBtn").addEventListener("click", (event) => {
-  if (answerInput) {
-    checkUserAnswer(userAnswer, currentQuestion.answer);
-  }
-});
+  document
+    .getElementById("answer1")
+    .addEventListener("click", function (event) {
+      console.log("event.target.innerText: ", event.target.innerText);
+      console.log("event.target.dataset: ", event.target.dataset.number);
+      userAnswer = parseInt(event.target.dataset.number);
+      if (!answerInput) {
+        answerInput = true;
+      }
+      console.log("userAnswer: ", userAnswer);
+    });
+  document
+    .getElementById("answer2")
+    .addEventListener("click", function (event) {
+      console.log("event.target.innerText: ", event.target.innerText);
+      console.log("event.target.dataset: ", event.target.dataset.number);
+      userAnswer = parseInt(event.target.dataset.number);
+      if (!answerInput) {
+        answerInput = true;
+      }
+      console.log("userAnswer: ", userAnswer);
+    });
 
-document.getElementById("answer1").addEventListener("click", function (event) {
-  console.log("event.target.innerText: ", event.target.innerText);
-  console.log("event.target.dataset: ", event.target.dataset.number);
-  userAnswer = parseInt(event.target.dataset.number);
-  if (!answerInput) {
-    answerInput = true;
-  }
-  console.log("userAnswer: ", userAnswer);
-});
-document.getElementById("answer2").addEventListener("click", function (event) {
-  console.log("event.target.innerText: ", event.target.innerText);
-  console.log("event.target.dataset: ", event.target.dataset.number);
-  userAnswer = parseInt(event.target.dataset.number);
-  if (!answerInput) {
-    answerInput = true;
-  }
-  console.log("userAnswer: ", userAnswer);
-});
-
-document.getElementById("answer3").addEventListener("click", function (event) {
-  console.log("event.target.innerText: ", event.target.innerText);
-  console.log("event.target.dataset: ", event.target.dataset.number);
-  userAnswer = parseInt(event.target.dataset.number);
-  if (!answerInput) {
-    answerInput = true;
-  }
-  console.log("userAnswer: ", userAnswer);
-});
-document.getElementById("answer4").addEventListener("click", function (event) {
-  console.log("event.target.innerText: ", event.target.innerText);
-  console.log("event.target.dataset: ", event.target.dataset.number);
-  userAnswer = parseInt(event.target.dataset.number);
-  if (!answerInput) {
-    answerInput = true;
-  }
-  console.log("userAnswer: ", userAnswer);
-});
+  document
+    .getElementById("answer3")
+    .addEventListener("click", function (event) {
+      console.log("event.target.innerText: ", event.target.innerText);
+      console.log("event.target.dataset: ", event.target.dataset.number);
+      userAnswer = parseInt(event.target.dataset.number);
+      if (!answerInput) {
+        answerInput = true;
+      }
+      console.log("userAnswer: ", userAnswer);
+    });
+  document
+    .getElementById("answer4")
+    .addEventListener("click", function (event) {
+      console.log("event.target.innerText: ", event.target.innerText);
+      console.log("event.target.dataset: ", event.target.dataset.number);
+      userAnswer = parseInt(event.target.dataset.number);
+      if (!answerInput) {
+        answerInput = true;
+      }
+      console.log("userAnswer: ", userAnswer);
+    });
+}
 
 // TODO
 // when the user is on the last question
