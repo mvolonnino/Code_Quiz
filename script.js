@@ -9,7 +9,7 @@ console.log(answerChoices);
 
 var currentQuestion = {};
 var answerInput = false;
-var score = 0;
+var userScore = 0;
 var questionCounter = 0;
 var remainingQuestions = [];
 var userAnswer = null;
@@ -34,31 +34,31 @@ var gameQuestions = [
     answerChoice4: "Captain America",
     answer: 3,
   },
-  {
-    question: "Who is the director of S.H.E.I.L.D.?",
-    answerChoice1: "Nick Fury",
-    answerChoice2: "Agent Coleman",
-    answerChoice3: "Steve Rodgers",
-    answerChoice4: "Peggy Carter",
-    answer: 1,
-  },
-  {
-    question:
-      "Which character turns into a big green monster when he gets angry?",
-    answerChoice1: "Black Panther",
-    answerChoice2: "Thor",
-    answerChoice3: "Hulk",
-    answerChoice4: "Black Widow",
-    answer: 3,
-  },
-  {
-    question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
-    answerChoice1: "FRIDAY",
-    answerChoice2: "Pepper Potts",
-    answerChoice3: "JARVIS",
-    answerChoice4: "HAPPY",
-    answer: 3,
-  },
+  // {
+  //   question: "Who is the director of S.H.E.I.L.D.?",
+  //   answerChoice1: "Nick Fury",
+  //   answerChoice2: "Agent Coleman",
+  //   answerChoice3: "Steve Rodgers",
+  //   answerChoice4: "Peggy Carter",
+  //   answer: 1,
+  // },
+  // {
+  //   question:
+  //     "Which character turns into a big green monster when he gets angry?",
+  //   answerChoice1: "Black Panther",
+  //   answerChoice2: "Thor",
+  //   answerChoice3: "Hulk",
+  //   answerChoice4: "Black Widow",
+  //   answer: 3,
+  // },
+  // {
+  //   question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
+  //   answerChoice1: "FRIDAY",
+  //   answerChoice2: "Pepper Potts",
+  //   answerChoice3: "JARVIS",
+  //   answerChoice4: "HAPPY",
+  //   answer: 3,
+  // },
 ];
 // Event listener to know when the user wants to startGame()
 document.getElementById("start-button").addEventListener("click", function () {
@@ -67,7 +67,7 @@ document.getElementById("start-button").addEventListener("click", function () {
 
 function startGame() {
   questionCounter = 0;
-  score = 0;
+  userScore = 0;
   remainingQuestions = [...gameQuestions];
   console.log("remainingQuestions: ", remainingQuestions);
   startTimer();
@@ -79,7 +79,6 @@ function startGame() {
 function startTimer() {
   var gameTimer = setInterval(function () {
     if (timer >= 0) {
-      console.log("timer: ", timer);
       $("#timer-countdown").text(timer);
       timer--;
     } else {
@@ -94,21 +93,22 @@ function checkUserAnswer(userAnswer, answer) {
   console.log("userAnswer: ", userAnswer); // string
   console.log("answer: ", answer); // number
   if (userAnswer === answer) {
-    console.log("that is correct");
+    userScore = userScore + 10;
+    console.log("that is correct, userScore + 10: ", userScore);
     $("#question-answer").text("Correct!");
     $("#question-answer").show();
   } else {
-    console.log("that is wrong");
+    userScore = userScore - 5;
+    console.log("that is wrong, minus 5 pts ", userScore);
     $("#question-answer").text("Wrong!");
     $("#question-answer").show();
   }
-
+  console.log("this is the final score: ", userScore);
   return getNextQuestion();
 }
 
 function getNextQuestion() {
   setTimeout(function () {
-    console.log("timeout");
     $("#question-answer").hide();
   }, 550);
   answerInput = false;
@@ -121,14 +121,19 @@ function getNextQuestion() {
   // when there are none left we want to change next button to submit
   // display score
   if (remainingQuestions.length === 0) {
-    $("nextBtn").text("Submit").show();
-
+    console.log("this is how many questions are left: ", remainingQuestions);
     console.log("there are no more questions");
+    var submit = $("#nextBtn").html(
+      "<button class='btn btn-primary'> submit </button>"
+    );
+    $("#nextBtn").text("submit");
+    document.getElementById("nextBtn").addEventListener("click", (event) => {
+      console.log("Submit button clicked: ", event.target);
+      window.location.href = "highscores.html";
+    });
 
     return;
   }
-
-  $("#question").text(currentQuestion.question);
 
   $("#question").text(currentQuestion.question);
   $("#answer1").text(currentQuestion.answerChoice1);
@@ -138,6 +143,7 @@ function getNextQuestion() {
 
   remainingQuestions.splice(questionIndex, 1);
 }
+function getUserScore() {}
 
 function userInputListeners() {
   document.getElementById("nextBtn").addEventListener("click", (event) => {
