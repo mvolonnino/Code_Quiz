@@ -2,11 +2,11 @@ h1 {
   display: flex;
   justify-content: center;
 }
+.btn-right {
+}
 
 .centerBtn {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .topContainer,
@@ -14,7 +14,7 @@ h1 {
   display: flex;
 }
 
-.question {
+.answer-choices {
   flex: 1;
   margin: 2px;
 }
