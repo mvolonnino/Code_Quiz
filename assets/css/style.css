@@ -12,6 +12,15 @@ h1 {
 .bottomContainer {
   display: flex;
 }
+.positionForm {
+  position: relative;
+}
+
+.buttonRight {
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
+}
 
 .answer-choices {
   flex: 1;

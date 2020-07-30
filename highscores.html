@@ -34,13 +34,22 @@
         <p>Your highscore: <span id="highscore"></span></p>
       </div>
       <div class="container">
-        <form>
+        <form class="positionForm">
           <div class="form-group">
             <label for="name">Username</label>
             <input type="text" class="form-control" id="name" aria-describedby="usernameHelp">
           </div>
-          <div>
-            <a href="#" type="button" class="btn btn-primary" id="submitName">Submit</a>
+          <div class="row">
+            <div class="col-md-9">
+              <div>
+                <a href="#" type="button" class="btn btn-primary" id="submitName">Submit</a>
+              </div>
+            </div>
+            <div class="col-md-3 ">
+              <div>
+                <a href="./index.html" type="button" class="btn btn-primary buttonRight" id="submitedName">Take Quiz Again</a>
+              </div>
+            </div>
           </div>
         </form>
 

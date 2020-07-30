@@ -249,14 +249,14 @@ function getNextQuestion() {
 }
 
 // Function that changes submit button to go back to homepage button
-function createHomeButton() {
-  $("#submitName").text("Take Quiz Again!");
-  document.getElementById("submitName").addEventListener("click", (event) => {
-    var homeBtn = document.getElementById("submitName");
-    console.log("homeBtn ", event.target);
-    homeBtn.href = "./index.html";
-  });
-}
+// function showTakeQuizBtn() {
+//   $("#submitedName").show();
+//   document.getElementById("submitName").addEventListener("click", (event) => {
+//     // var homeBtn = document.getElementById("submitName");
+//     // console.log("homeBtn ", event.target);
+//     // homeBtn.href = "./index.html";
+//   });
+// }
 //Function to take the submit btn that we created when remaining questions = 0 and converts btn back to a nxt btn
 // function createNextBtn() {
 //   $("#nextBtn").text("Next");
@@ -300,7 +300,7 @@ function setUserName() {
   storageArray.push(userObject);
   localStorage.setItem("userObject", JSON.stringify(storageArray));
 
-  createHomeButton();
+  // createHomeButton();
   printHighScores(storageArray);
 }
 
