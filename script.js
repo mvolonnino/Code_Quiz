@@ -5,14 +5,15 @@ var question = document.getElementById("question");
 var answerChoices = Array.from(
   document.getElementsByClassName("answer-choices")
 );
-console.log(answerChoices);
+// console.log(answerChoices);
 
 var currentQuestion = {};
 var answerInput = false;
-var userScore = 0;
+// var userScore;
 var questionCounter = 0;
 var remainingQuestions = [];
 var userAnswer = null;
+var gameTimer;
 var timer = 20; //seconds
 
 // Questions for the game
@@ -61,23 +62,30 @@ var gameQuestions = [
   // },
 ];
 // Event listener to know when the user wants to startGame()
-document.getElementById("start-button").addEventListener("click", function () {
-  startGame();
-});
+var startButtonElement = document.getElementById("start-button");
+if (startButtonElement) {
+  document
+    .getElementById("start-button")
+    .addEventListener("click", function () {
+      startGame();
+    });
+}
+
+// document.getElementById("highScore").addEventListener("click", function () {
+//   alert("You have not played the game! Click Start Game! to get a highscore!");
+// });
 
 function startGame() {
   questionCounter = 0;
-  userScore = 0;
   remainingQuestions = [...gameQuestions];
   console.log("remainingQuestions: ", remainingQuestions);
   startTimer();
   $("#timer-countdown").text(timer);
   getNextQuestion();
-  userInputListeners();
 }
 
 function startTimer() {
-  var gameTimer = setInterval(function () {
+  gameTimer = setInterval(function () {
     if (timer >= 0) {
       $("#timer-countdown").text(timer);
       timer--;
@@ -89,21 +97,21 @@ function startTimer() {
 }
 
 function checkUserAnswer(userAnswer, answer) {
-  // check to see if userAnswer === currentQuestion.answer
+  // check to see if userAnswer === currentQuestion.answer0
   console.log("userAnswer: ", userAnswer); // string
   console.log("answer: ", answer); // number
   if (userAnswer === answer) {
-    userScore = userScore + 10;
-    console.log("that is correct, userScore + 10: ", userScore);
+    timer = timer + 4;
+    // console.log("that is correct, userScore + 10: ", userScore);
     $("#question-answer").text("Correct!");
     $("#question-answer").show();
   } else {
-    userScore = userScore - 5;
-    console.log("that is wrong, minus 5 pts ", userScore);
+    timer = timer - 2;
+    // console.log("that is wrong, minus 5 pts ", userScore);
     $("#question-answer").text("Wrong!");
     $("#question-answer").show();
   }
-  console.log("this is the final score: ", userScore);
+
   return getNextQuestion();
 }
 
@@ -117,95 +125,107 @@ function getNextQuestion() {
   currentQuestion = remainingQuestions[questionIndex];
   console.log("currentQuestion: ", currentQuestion);
 
-  // check for how many questions are left
-  // when there are none left we want to change next button to submit
-  // display score
-  if (remainingQuestions.length === 0) {
-    console.log("this is how many questions are left: ", remainingQuestions);
-    console.log("there are no more questions");
-    var submit = $("#nextBtn").html(
-      "<button class='btn btn-primary'> submit </button>"
-    );
-    $("#nextBtn").text("submit");
-    document.getElementById("nextBtn").addEventListener("click", (event) => {
-      console.log("Submit button clicked: ", event.target);
-      window.location.href = "highscores.html";
-    });
+  if (remainingQuestions.length > 0) {
+    $("#question").text(currentQuestion.question);
+    $("#answer1").text(currentQuestion.answerChoice1);
+    $("#answer2").text(currentQuestion.answerChoice2);
+    $("#answer3").text(currentQuestion.answerChoice3);
+    $("#answer4").text(currentQuestion.answerChoice4);
 
-    return;
-  }
+    remainingQuestions.splice(questionIndex, 1);
 
-  $("#question").text(currentQuestion.question);
-  $("#answer1").text(currentQuestion.answerChoice1);
-  $("#answer2").text(currentQuestion.answerChoice2);
-  $("#answer3").text(currentQuestion.answerChoice3);
-  $("#answer4").text(currentQuestion.answerChoice4);
-
-  remainingQuestions.splice(questionIndex, 1);
-}
-function getUserScore() {}
-
-function userInputListeners() {
-  document.getElementById("nextBtn").addEventListener("click", (event) => {
-    if (answerInput) {
-      checkUserAnswer(userAnswer, currentQuestion.answer);
+    if (remainingQuestions.length === 0) {
+      createSubmitButton();
     }
-  });
+  }
+}
 
+function createSubmitButton() {
+  $("#nextBtn").text("Submit");
+  document.getElementById("nextBtn").addEventListener("click", (event) => {
+    var submitBtn = document.getElementById("nextBtn");
+    console.log("Submit button clicked: ", event.target);
+    clearTimeout(gameTimer);
+    timer = timer + 1;
+    submitBtn.href = "./highscores.html";
+    localStorage.setItem("highscore", timer);
+    $("#highscore").text(timer);
+    console.log("timer that should be equal to highscore ", timer);
+  });
+}
+
+var submitNameElement = document.getElementById("submitName");
+if (submitNameElement) {
+  submitNameElement.addEventListener("click", function () {
+    setUserName();
+  });
+}
+function setUserName() {
+  var username = $("#name").val();
+  console.log("username", username);
+  localStorage.setItem("highscore", {
+    username: username,
+    highscore: highscore
+  });
+}
+
+var highscoreElement = document.getElementById("highscore");
+if (highscoreElement) {
+  var userHighScore = localStorage.getItem("highscore");
+  console.log(userHighScore);
+  $("#highscore").text(userHighScore);
+}
+
+// next button event listener
+var nextButtonElement = document.getElementById("nextBtn");
+if (nextButtonElement) {
+  document
+    .getElementById("nextBtn")
+    .addEventListener("click", function (event) {
+      if (answerInput) {
+        checkUserAnswer(userAnswer, currentQuestion.answer);
+      }
+    });
+}
+
+// answer event listeners
+var answer1Element = document.getElementById("answer1");
+if (answer1Element) {
   document
     .getElementById("answer1")
     .addEventListener("click", function (event) {
-      console.log("event.target.innerText: ", event.target.innerText);
-      console.log("event.target.dataset: ", event.target.dataset.number);
-      userAnswer = parseInt(event.target.dataset.number);
-      if (!answerInput) {
-        answerInput = true;
-      }
-      console.log("userAnswer: ", userAnswer);
+      getUserAnswer(event);
     });
+}
+var answer2Element = document.getElementById("answer2");
+if (answer2Element) {
   document
     .getElementById("answer2")
     .addEventListener("click", function (event) {
-      console.log("event.target.innerText: ", event.target.innerText);
-      console.log("event.target.dataset: ", event.target.dataset.number);
-      userAnswer = parseInt(event.target.dataset.number);
-      if (!answerInput) {
-        answerInput = true;
-      }
-      console.log("userAnswer: ", userAnswer);
+      getUserAnswer(event);
     });
-
+}
+var answer3Element = document.getElementById("answer3");
+if (answer3Element) {
   document
     .getElementById("answer3")
     .addEventListener("click", function (event) {
-      console.log("event.target.innerText: ", event.target.innerText);
-      console.log("event.target.dataset: ", event.target.dataset.number);
-      userAnswer = parseInt(event.target.dataset.number);
-      if (!answerInput) {
-        answerInput = true;
-      }
-      console.log("userAnswer: ", userAnswer);
+      getUserAnswer(event);
     });
+}
+var answer4Element = document.getElementById("answer4");
+if (answer4Element) {
   document
     .getElementById("answer4")
     .addEventListener("click", function (event) {
-      console.log("event.target.innerText: ", event.target.innerText);
-      console.log("event.target.dataset: ", event.target.dataset.number);
-      userAnswer = parseInt(event.target.dataset.number);
-      if (!answerInput) {
-        answerInput = true;
-      }
-      console.log("userAnswer: ", userAnswer);
+      getUserAnswer(event);
     });
 }
 
-// TODO
-// when the user is on the last question
-// change next button to submit button
-// submit function // when timer runs out or when submit button is clicked
-// calculate score
-// hide modal contents
-// ex questions, answers, correct/wrong, timer
-// display score
-// if the answer is correct add 4 seconds to the timer
-// if the asnwer is wrong subtract 2 seconds from the timer
+function getUserAnswer(event) {
+  userAnswer = parseInt(event.target.dataset.number);
+
+  if (!answerInput) {
+    answerInput = true;
+  }
+}
