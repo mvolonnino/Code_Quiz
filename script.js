@@ -9,7 +9,6 @@ var answerChoices = Array.from(
 
 var currentQuestion = {};
 var answerInput = false;
-// var userScore;
 var questionCounter = 0;
 var remainingQuestions = [];
 var userAnswer = null;
@@ -35,31 +34,31 @@ var gameQuestions = [
     answerChoice4: "Captain America",
     answer: 3,
   },
-  // {
-  //   question: "Who is the director of S.H.E.I.L.D.?",
-  //   answerChoice1: "Nick Fury",
-  //   answerChoice2: "Agent Coleman",
-  //   answerChoice3: "Steve Rodgers",
-  //   answerChoice4: "Peggy Carter",
-  //   answer: 1,
-  // },
-  // {
-  //   question:
-  //     "Which character turns into a big green monster when he gets angry?",
-  //   answerChoice1: "Black Panther",
-  //   answerChoice2: "Thor",
-  //   answerChoice3: "Hulk",
-  //   answerChoice4: "Black Widow",
-  //   answer: 3,
-  // },
-  // {
-  //   question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
-  //   answerChoice1: "FRIDAY",
-  //   answerChoice2: "Pepper Potts",
-  //   answerChoice3: "JARVIS",
-  //   answerChoice4: "HAPPY",
-  //   answer: 3,
-  // },
+  {
+    question: "Who is the director of S.H.E.I.L.D.?",
+    answerChoice1: "Nick Fury",
+    answerChoice2: "Agent Coleman",
+    answerChoice3: "Steve Rodgers",
+    answerChoice4: "Peggy Carter",
+    answer: 1,
+  },
+  {
+    question:
+      "Which character turns into a big green monster when he gets angry?",
+    answerChoice1: "Black Panther",
+    answerChoice2: "Thor",
+    answerChoice3: "Hulk",
+    answerChoice4: "Black Widow",
+    answer: 3,
+  },
+  {
+    question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
+    answerChoice1: "FRIDAY",
+    answerChoice2: "Pepper Potts",
+    answerChoice3: "JARVIS",
+    answerChoice4: "HAPPY",
+    answer: 3,
+  },
 ];
 // Event listener to know when the user wants to startGame()
 var startButtonElement = document.getElementById("start-button");
@@ -70,10 +69,6 @@ if (startButtonElement) {
       startGame();
     });
 }
-
-// document.getElementById("highScore").addEventListener("click", function () {
-//   alert("You have not played the game! Click Start Game! to get a highscore!");
-// });
 
 function startGame() {
   questionCounter = 0;
@@ -140,6 +135,10 @@ function getNextQuestion() {
   }
 }
 
+// Function that changes submit button to go back to homepage button
+
+// Function that resets game variables back to global
+
 function createSubmitButton() {
   $("#nextBtn").text("Submit");
   document.getElementById("nextBtn").addEventListener("click", (event) => {
@@ -158,20 +157,46 @@ var submitNameElement = document.getElementById("submitName");
 if (submitNameElement) {
   submitNameElement.addEventListener("click", function () {
     setUserName();
+    $("#submitName").hide();
   });
 }
 function setUserName() {
+  var storageArray = [];
   var username = $("#name").val();
-  console.log("username", username);
-  localStorage.setItem("highscore", {
+  var userHighScore = getUserHighScore();
+  var userObject = {
     username: username,
-    highscore: highscore
+    highscore: userHighScore,
+  };
+  storageArray = JSON.parse(localStorage.getItem("userObject")) || [];
+  storageArray.push(userObject);
+  localStorage.setItem("userObject", JSON.stringify(storageArray));
+
+  printHighScores(storageArray);
+}
+
+// function that prints scores to screen
+function printHighScores(storageArray) {
+  console.log("storageArray: ", storageArray);
+
+  // forEach through storageArray create your list
+  storageArray.forEach(function (userObject) {
+    console.log("userObject ", userObject);
+    var liElement = document.createElement("li");
+    liElement.textContent = userObject.username + " - " + userObject.highscore;
+    var uLElement = $("#list");
+    uLElement.prepend(liElement);
   });
 }
 
+function getUserHighScore() {
+  var userHighScore = localStorage.getItem("highscore");
+
+  return userHighScore;
+}
 var highscoreElement = document.getElementById("highscore");
 if (highscoreElement) {
-  var userHighScore = localStorage.getItem("highscore");
+  var userHighScore = getUserHighScore();
   console.log(userHighScore);
   $("#highscore").text(userHighScore);
 }
