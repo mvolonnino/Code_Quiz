@@ -5,7 +5,6 @@ var question = document.getElementById("question");
 var answerChoices = Array.from(
   document.getElementsByClassName("answer-choices")
 );
-// console.log(answerChoices);
 
 var currentQuestion = {};
 var answerInput = false;
@@ -117,6 +116,7 @@ var gameQuestions = [
   },
 ];
 console.log("this is how many questions we have: ", gameQuestions);
+
 // Event listener to know when the user wants to startGame()
 var startButtonElement = document.getElementById("start-button");
 if (startButtonElement) {
@@ -154,13 +154,11 @@ function checkUserAnswer(userAnswer, answer) {
   console.log("answer: ", answer); // number
   if (userAnswer === answer) {
     timer = timer + 4;
-    // console.log("that is correct, userScore + 10: ", userScore);
     var correct = $("#question-answer").text("Correct!");
     correct.attr("style", "color:green");
     $("#question-answer").show();
   } else {
     timer = timer - 2;
-    // console.log("that is wrong, minus 5 pts ", userScore);
     var wrong = $("#question-answer").text("Wrong!");
     wrong.attr("style", "color:red");
     $("#question-answer").show();
