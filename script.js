@@ -163,6 +163,22 @@ var gameQuestions = [
     answerChoice4: "T'Chaka",
     answer: 2,
   },
+  {
+    question: "Who is Captain America's best friend?",
+    answerChoice1: "Steve Rodgers",
+    answerChoice2: "Tony Stark",
+    answerChoice3: "Sam Wilson",
+    answerChoice4: "Bucky Barnes",
+    answer: 4,
+  },
+  {
+    question: "What is Agent Coulson's first name?",
+    answerChoice1: "Happy",
+    answerChoice2: "Phil",
+    answerChoice3: "Nick",
+    answerChoice4: "Paul",
+    answer: 2,
+  },
 ];
 console.log("this is how many questions we have: ", gameQuestions);
 
