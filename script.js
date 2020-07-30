@@ -136,7 +136,14 @@ function getNextQuestion() {
 }
 
 // Function that changes submit button to go back to homepage button
-
+function createHomeButton() {
+  $("#submitName").text("Take Quiz Again!");
+  document.getElementById("submitName").addEventListener("click", (event) => {
+    var homeBtn = document.getElementById("submitName");
+    console.log("homeBtn ", event.target);
+    homeBtn.href = "./index.html";
+  });
+}
 // Function that resets game variables back to global
 
 function createSubmitButton() {
@@ -157,7 +164,7 @@ var submitNameElement = document.getElementById("submitName");
 if (submitNameElement) {
   submitNameElement.addEventListener("click", function () {
     setUserName();
-    $("#submitName").hide();
+    // $("#submitName").hide();
   });
 }
 function setUserName() {
@@ -172,6 +179,7 @@ function setUserName() {
   storageArray.push(userObject);
   localStorage.setItem("userObject", JSON.stringify(storageArray));
 
+  createHomeButton();
   printHighScores(storageArray);
 }
 
