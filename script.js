@@ -114,6 +114,55 @@ var gameQuestions = [
     answerChoice4: "Uranium",
     answer: 3,
   },
+  {
+    question: "Who is Gamora's sister?",
+    answerChoice1: "Aurora",
+    answerChoice2: "Nebula",
+    answerChoice3: "Asteroid",
+    answerChoice4: "Mantis",
+    answer: 2,
+  },
+  {
+    question: "Which Chris plays Star-Lord?",
+    answerChoice1: "Chris Hemsworth",
+    answerChoice2: "Chris Evans",
+    answerChoice3: "Chris Pratt",
+    answerChoice4: "Chris Pine",
+    answer: 3,
+  },
+  {
+    question: "Who is Ant-Man in the MCU?",
+    answerChoice1: "Scott Lang",
+    answerChoice2: "Hank Pym",
+    answerChoice3: "Peter Parker",
+    answerChoice4: "Steve Rodgers",
+    answer: 1,
+  },
+  {
+    question:
+      "Who was the first to yeild the Infinity Gauntlet with all the stones?",
+    answerChoice1: "Iron Man",
+    answerChoice2: "Hulk",
+    answerChoice3: "Thor",
+    answerChoice4: "Thanos",
+    answer: 4,
+  },
+  {
+    question: "Where was Thanos' home world?",
+    answerChoice1: "Pluto",
+    answerChoice2: "Titan",
+    answerChoice3: "Pluto",
+    answerChoice4: "Nvidelir",
+    answer: 2,
+  },
+  {
+    question: "What is Black Panther's real name?",
+    answerChoice1: "N'Jadaka",
+    answerChoice2: "T'Challa",
+    answerChoice3: "Zuri",
+    answerChoice4: "T'Chaka",
+    answer: 2,
+  },
 ];
 console.log("this is how many questions we have: ", gameQuestions);
 
