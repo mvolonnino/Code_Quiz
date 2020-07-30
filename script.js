@@ -50,132 +50,127 @@ var gameQuestions = [
     answerChoice4: "Black Widow",
     answer: 3,
   },
-  // {
-  //   question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
-  //   answerChoice1: "FRIDAY",
-  //   answerChoice2: "Pepper Potts",
-  //   answerChoice3: "JARVIS",
-  //   answerChoice4: "HAPPY",
-  //   answer: 3,
-  // },
-  // {
-  //   question: "What is Hawkeye's first name?",
-  //   answerChoice1: "Steve",
-  //   answerChoice2: "Clint",
-  //   answerChoice3: "Coleman",
-  //   answerChoice4: "Bruce",
-  //   answer: 2,
-  // },
-  // {
-  //   question: "Who is the God of Thunder?",
-  //   answerChoice1: "Thor",
-  //   answerChoice2: "Loki",
-  //   answerChoice3: "Odin",
-  //   answerChoice4: "Heimdall",
-  //   answer: 1,
-  // },
-  // {
-  //   question: "Where is Peter Parker from?",
-  //   answerChoice1: "Brooklyn",
-  //   answerChoice2: "Staten Island",
-  //   answerChoice3: "Manhattan",
-  //   answerChoice4: "Queens",
-  //   answer: 4,
-  // },
-  // {
-  //   question: "Who is Natasha Romanov?",
-  //   answerChoice1: "Scarlet Witch",
-  //   answerChoice2: "Black Widow",
-  //   answerChoice3: "Peggy Carter",
-  //   answerChoice4: "Valkryie",
-  //   answer: 2,
-  // },
-  // {
-  //   question: "Who is the God of Mischeif?",
-  //   answerChoice1: "Thor",
-  //   answerChoice2: "Starlord",
-  //   answerChoice3: "Loki",
-  //   answerChoice4: "Odin",
-  //   answer: 3,
-  // },
-  // {
-  //   question: "Which is the first 'Infinity Stone' to show up in the MCU?",
-  //   answerChoice1: "Power Stone",
-  //   answerChoice2: "Mind Stone",
-  //   answerChoice3: "Time Stone",
-  //   answerChoice4: "Space Stone",
-  //   answer: 4,
-  // },
-  // {
-  //   question: "What is Captain America's sheild made out of?",
-  //   answerChoice1: "Aluminum",
-  //   answerChoice2: "Adamantium",
-  //   answerChoice3: "Vibranium",
-  //   answerChoice4: "Uranium",
-  //   answer: 3,
-  // },
-  // {
-  //   question: "Who is Gamora's sister?",
-  //   answerChoice1: "Aurora",
-  //   answerChoice2: "Nebula",
-  //   answerChoice3: "Asteroid",
-  //   answerChoice4: "Mantis",
-  //   answer: 2,
-  // },
-  // {
-  //   question: "Which Chris plays Star-Lord?",
-  //   answerChoice1: "Chris Hemsworth",
-  //   answerChoice2: "Chris Evans",
-  //   answerChoice3: "Chris Pratt",
-  //   answerChoice4: "Chris Pine",
-  //   answer: 3,
-  // },
-  // {
-  //   question: "Who is Ant-Man in the MCU?",
-  //   answerChoice1: "Scott Lang",
-  //   answerChoice2: "Hank Pym",
-  //   answerChoice3: "Peter Parker",
-  //   answerChoice4: "Steve Rodgers",
-  //   answer: 1,
-  // },
-  // {
-  //   question:
-  //     "Who was the first to yeild the Infinity Gauntlet with all the stones?",
-  //   answerChoice1: "Iron Man",
-  //   answerChoice2: "Hulk",
-  //   answerChoice3: "Thor",
-  //   answerChoice4: "Thanos",
-  //   answer: 4,
-  // },
-  // {
-  //   question: "Where was Thanos' home world?",
-  //   answerChoice1: "Pluto",
-  //   answerChoice2: "Titan",
-  //   answerChoice3: "Saturn",
-  //   answerChoice4: "Nvidelir",
-  //   answer: 2,
-  // },
-  // {
-  //   question: "What is Black Panther's real name?",
-  //   answerChoice1: "N'Jadaka",
-  //   answerChoice2: "T'Challa",
-  //   answerChoice3: "Zuri",
-  //   answerChoice4: "T'Chaka",
-  //   answer: 2,
-  // },
+  {
+    question: "In Iron Man 1, who is Tony Stark's A.I. that runs his suit?",
+    answerChoice1: "FRIDAY",
+    answerChoice2: "Pepper Potts",
+    answerChoice3: "JARVIS",
+    answerChoice4: "HAPPY",
+    answer: 3,
+  },
+  {
+    question: "What is Hawkeye's first name?",
+    answerChoice1: "Steve",
+    answerChoice2: "Clint",
+    answerChoice3: "Coleman",
+    answerChoice4: "Bruce",
+    answer: 2,
+  },
+  {
+    question: "Who is the God of Thunder?",
+    answerChoice1: "Thor",
+    answerChoice2: "Loki",
+    answerChoice3: "Odin",
+    answerChoice4: "Heimdall",
+    answer: 1,
+  },
+  {
+    question: "Where is Peter Parker from?",
+    answerChoice1: "Brooklyn",
+    answerChoice2: "Staten Island",
+    answerChoice3: "Manhattan",
+    answerChoice4: "Queens",
+    answer: 4,
+  },
+  {
+    question: "Who is Natasha Romanov?",
+    answerChoice1: "Scarlet Witch",
+    answerChoice2: "Black Widow",
+    answerChoice3: "Peggy Carter",
+    answerChoice4: "Valkryie",
+    answer: 2,
+  },
+  {
+    question: "Who is the God of Mischeif?",
+    answerChoice1: "Thor",
+    answerChoice2: "Starlord",
+    answerChoice3: "Loki",
+    answerChoice4: "Odin",
+    answer: 3,
+  },
+  {
+    question: "Which is the first 'Infinity Stone' to show up in the MCU?",
+    answerChoice1: "Power Stone",
+    answerChoice2: "Mind Stone",
+    answerChoice3: "Time Stone",
+    answerChoice4: "Space Stone",
+    answer: 4,
+  },
+  {
+    question: "What is Captain America's sheild made out of?",
+    answerChoice1: "Aluminum",
+    answerChoice2: "Adamantium",
+    answerChoice3: "Vibranium",
+    answerChoice4: "Uranium",
+    answer: 3,
+  },
+  {
+    question: "Who is Gamora's sister?",
+    answerChoice1: "Aurora",
+    answerChoice2: "Nebula",
+    answerChoice3: "Asteroid",
+    answerChoice4: "Mantis",
+    answer: 2,
+  },
+  {
+    question: "Which Chris plays Star-Lord?",
+    answerChoice1: "Chris Hemsworth",
+    answerChoice2: "Chris Evans",
+    answerChoice3: "Chris Pratt",
+    answerChoice4: "Chris Pine",
+    answer: 3,
+  },
+  {
+    question: "Who is Ant-Man in the MCU?",
+    answerChoice1: "Scott Lang",
+    answerChoice2: "Hank Pym",
+    answerChoice3: "Peter Parker",
+    answerChoice4: "Steve Rodgers",
+    answer: 1,
+  },
+  {
+    question:
+      "Who was the first to yeild the Infinity Gauntlet with all the stones?",
+    answerChoice1: "Iron Man",
+    answerChoice2: "Hulk",
+    answerChoice3: "Thor",
+    answerChoice4: "Thanos",
+    answer: 4,
+  },
+  {
+    question: "Where was Thanos' home world?",
+    answerChoice1: "Pluto",
+    answerChoice2: "Titan",
+    answerChoice3: "Saturn",
+    answerChoice4: "Nvidelir",
+    answer: 2,
+  },
+  {
+    question: "What is Black Panther's real name?",
+    answerChoice1: "N'Jadaka",
+    answerChoice2: "T'Challa",
+    answerChoice3: "Zuri",
+    answerChoice4: "T'Chaka",
+    answer: 2,
+  },
 ];
 console.log("this is how many questions we have: ", gameQuestions);
 
 $(".close").on("click", function (event) {
   timer = timer;
   clearTimeout(gameTimer);
-  questionCounter = 0;
-  remainingQuestions = gameQuestions;
   console.log("this is remaining question: ", remainingQuestions);
-  currentQuestion = {};
-  answerInput = false;
-  userAnswer = null;
-  createNextBtn();
+  $("#start-button").text("Continue Game");
 });
 
 // Event listener to know when the user wants to startGame()
@@ -246,7 +241,6 @@ function getNextQuestion() {
     $("#answer4").text(currentQuestion.answerChoice4);
 
     remainingQuestions.splice(questionIndex, 1);
-    createNextBtn();
 
     if (remainingQuestions.length === 0) {
       createSubmitButton();
@@ -264,14 +258,14 @@ function createHomeButton() {
   });
 }
 //Function to take the submit btn that we created when remaining questions = 0 and converts btn back to a nxt btn
-function createNextBtn() {
-  $("#nextBtn").text("Next");
-  $("#closeBtn").on("click", function (event) {
-    var nextBtnClose = $("#nextBtn");
-    console.log("nextbtn clicked: ", nextBtnClose);
-    // nextBtnClose.attr("href", "./index.html");
-  });
-}
+// function createNextBtn() {
+//   $("#nextBtn").text("Next");
+//   $("#closeBtn").on("click", function (event) {
+//     var nextBtnClose = $("#nextBtn");
+//     console.log("nextbtn clicked: ", nextBtnClose);
+//     // nextBtnClose.attr("href", "./index.html");
+//   });
+// }
 // Function that resets game variables back to global when the "x" btn is clicked in modal
 
 function createSubmitButton() {
@@ -285,9 +279,6 @@ function createSubmitButton() {
     localStorage.setItem("highscore", timer);
     $("#highscore").text(timer);
     console.log("timer that should be equal to highscore ", timer);
-    if (remainingQuestions.length > 0) {
-      submitBtn.href = "#";
-    }
   });
 }
 
