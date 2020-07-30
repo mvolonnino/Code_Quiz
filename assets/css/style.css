@@ -3,10 +3,11 @@ h1 {
   justify-content: center;
 }
 
-.centerBtn {
+.centerInfo {
   display: flex;
+  justify-content: center;
+  text-align: center;
 }
-
 .topContainer,
 .bottomContainer {
   display: flex;
@@ -21,6 +22,7 @@ h1 {
 .highscoreData {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 #question-answer {

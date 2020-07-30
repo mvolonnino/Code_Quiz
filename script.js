@@ -59,7 +59,64 @@ var gameQuestions = [
     answerChoice4: "HAPPY",
     answer: 3,
   },
+  {
+    question: "What is Hawkeye's first name?",
+    answerChoice1: "Steve",
+    answerChoice2: "Clint",
+    answerChoice3: "Coleman",
+    answerChoice4: "Bruce",
+    answer: 2,
+  },
+  {
+    question: "Who is the God of Thunder?",
+    answerChoice1: "Thor",
+    answerChoice2: "Loki",
+    answerChoice3: "Odin",
+    answerChoice4: "Heimdall",
+    answer: 1,
+  },
+  {
+    question: "Where is Peter Parker from?",
+    answerChoice1: "Brooklyn",
+    answerChoice2: "Staten Island",
+    answerChoice3: "Manhattan",
+    answerChoice4: "Queens",
+    answer: 4,
+  },
+  {
+    question: "Who is Natasha Romanov?",
+    answerChoice1: "Scarlet Witch",
+    answerChoice2: "Black Widow",
+    answerChoice3: "Peggy Carter",
+    answerChoice4: "Valkryie",
+    answer: 2,
+  },
+  {
+    question: "Who is the God of Mischeif?",
+    answerChoice1: "Thor",
+    answerChoice2: "Starlord",
+    answerChoice3: "Loki",
+    answerChoice4: "Odin",
+    answer: 3,
+  },
+  {
+    question: "Which is the first 'Infinity Stone' to show up in the MCU?",
+    answerChoice1: "Power Stone",
+    answerChoice2: "Mind Stone",
+    answerChoice3: "Time Stone",
+    answerChoice4: "Space Stone",
+    answer: 4,
+  },
+  {
+    question: "What is Captain America's sheild made out of?",
+    answerChoice1: "Aluminum",
+    answerChoice2: "Adamantium",
+    answerChoice3: "Vibranium",
+    answerChoice4: "Uranium",
+    answer: 3,
+  },
 ];
+console.log("this is how many questions we have: ", gameQuestions);
 // Event listener to know when the user wants to startGame()
 var startButtonElement = document.getElementById("start-button");
 if (startButtonElement) {
@@ -98,12 +155,14 @@ function checkUserAnswer(userAnswer, answer) {
   if (userAnswer === answer) {
     timer = timer + 4;
     // console.log("that is correct, userScore + 10: ", userScore);
-    $("#question-answer").text("Correct!");
+    var correct = $("#question-answer").text("Correct!");
+    correct.attr("style", "color:green");
     $("#question-answer").show();
   } else {
     timer = timer - 2;
     // console.log("that is wrong, minus 5 pts ", userScore);
-    $("#question-answer").text("Wrong!");
+    var wrong = $("#question-answer").text("Wrong!");
+    wrong.attr("style", "color:red");
     $("#question-answer").show();
   }
 
@@ -144,7 +203,7 @@ function createHomeButton() {
     homeBtn.href = "./index.html";
   });
 }
-// Function that resets game variables back to global
+// Function that resets game variables back to global when the "x" btn is clicked in modal
 
 function createSubmitButton() {
   $("#nextBtn").text("Submit");
@@ -164,7 +223,6 @@ var submitNameElement = document.getElementById("submitName");
 if (submitNameElement) {
   submitNameElement.addEventListener("click", function () {
     setUserName();
-    // $("#submitName").hide();
   });
 }
 function setUserName() {

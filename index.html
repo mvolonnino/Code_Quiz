@@ -24,13 +24,13 @@
   <body>
     <div class="jumbotron shadow-lg">
       <h1 class="display-4">The Quiz Game!</h1>
-      <p class="lead">
+      <p class="lead centerInfo">
         This is a multiple choice game. The rules are simple: answer the
         questions correctly! At the end, save your initials and high score.
         C'mon, you got this, show us how smart you are.
       </p>
       <hr class="my-4" />
-      <p>
+      <p class="centerInfo">
         Click the button below to start the game. When clicked, a countdown
         timer will start from 20 seconds. Every right answer you get will add 4
         seconds to the timer, but beware. Every wrong answer will subtract 2
@@ -40,10 +40,10 @@
       <!-- Button trigger modal -->
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12 centerInfo">
             <button
               type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary btn-lg centerInfo"
               id="start-button"
               data-toggle="modal"
               data-target="#quizModal"
@@ -74,6 +74,7 @@
               </h5>
               <div id="timer-countdown">Timer Goes here</div>
               <button
+                id="closeBtn"
                 type="button"
                 class="close"
                 data-dismiss="modal"
